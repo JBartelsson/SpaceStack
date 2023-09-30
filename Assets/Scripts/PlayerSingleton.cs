@@ -1,18 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+using System;
 
-
-[System.Serializable]
-public class AbilityStackEvent : UnityEvent<int>
-{
-}
 public class PlayerSingleton : MonoBehaviour
 {
     public enum Ability {None, Dash, Shoot, Grante, Minimize};
 
     private Stack<Ability> abilityStack = new Stack<Ability>();
+    public event Action<Ability> OnAbilityStack;
 
     public Stack<Ability> getAbilityStack(){
         return abilityStack;
@@ -23,7 +19,7 @@ public class PlayerSingleton : MonoBehaviour
 
     public void pushAbilityStack(Ability value){
         abilityStack.Push(value);
-        //AbilityStackEvent.Invoke(value);
+        OnAbilityStack?.Invoke(value);
     }
 
     public Ability popAbilityStack()
@@ -31,7 +27,9 @@ public class PlayerSingleton : MonoBehaviour
 
          if (abilityStack.Count > 0)
         {
+            OnAbilityStack?.Invoke(Ability.None);
             return abilityStack.Pop();
+            
         }
         return Ability.None;
 
