@@ -1985,17 +1985,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 6898235685585452519}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2ee24531a5ad504a9023f31f9b67c2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b6bd5c5ad353d34dae565b4d562c00d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 6898235685585452515}
-  dash: 32
+  controller: {fileID: 0}
+  dash: 27
   MaxHealth: 100
   spawnPoint: {fileID: 0}
-  projectilePrefab: {fileID: 6650616739989489923, guid: 114088812270e2a498bcb37669103ebd, type: 3}
-  projectileSpawnpoint: {fileID: 4147569233322689239}
-  projectileSpeed: 8
-  projectileDamage: 100
+  projectilePrefab: {fileID: 0}
+  projectileSpawnpoint: {fileID: 0}
+  projectileSpeed: 0
+  projectileDamage: 0
 --- !u!1 &6898235685591837766
 GameObject:
   m_ObjectHideFlags: 0
