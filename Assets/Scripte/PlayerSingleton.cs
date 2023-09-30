@@ -1,10 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
+
+[System.Serializable]
+public class AbilityStackEvent : UnityEvent<int>
+{
+}
 public class PlayerSingleton : MonoBehaviour
 {
-    public enum Ability {Dash, Shoot, Grante, Minimize};
+    public enum Ability {None, Dash, Shoot, Grante, Minimize};
+
     private Stack<Ability> abilityStack = new Stack<Ability>();
 
     public Stack<Ability> getAbilityStack(){
@@ -16,11 +23,18 @@ public class PlayerSingleton : MonoBehaviour
 
     public void pushAbilityStack(Ability value){
         abilityStack.Push(value);
+        //AbilityStackEvent.Invoke(value);
     }
 
     public Ability popAbilityStack()
     {
-        return abilityStack.Pop();
+
+         if (abilityStack.Count > 0)
+        {
+            return abilityStack.Pop();
+        }
+        return Ability.None;
+
     }
 
     public Ability peekAbilityStack(){
@@ -50,4 +64,21 @@ public class PlayerSingleton : MonoBehaviour
     {
         Debug.Log("It works.");
     }
+
+
+//Nur für Test Zwecke Kann gelöscht werden!
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            pushAbilityStack(Ability.Dash);
+            Debug.Log("Pushidi Push");
+        }
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            Ability tmp = popAbilityStack();
+            Debug.Log("Popidi Pop: " + tmp.ToString());
+        }
+    }
+
 }
