@@ -1,19 +1,16 @@
 using Invector.vCharacterController;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 
-[System.Serializable]
-public class AbilityStackEvent : UnityEvent<int>
-{
-}
 public class PlayerSingleton : MonoBehaviour
 {
     public enum Ability {None, Dash, Shoot, Grante, Minimize};
 
     private Stack<Ability> abilityStack = new Stack<Ability>();
+    public event Action<Ability> OnAbilityStack;
 
     bool isDashing = false;
     [Header("Character")]
@@ -27,20 +24,12 @@ public class PlayerSingleton : MonoBehaviour
     [SerializeField] private Transform projectileSpawnpoint;
     [SerializeField] private float projectileSpeed;
     [SerializeField] private float projectileDamage;
-    [Header("Bombing")]
-    [SerializeField] private GameObject bombPrefab;
-    [SerializeField] private LayerMask groundLayer;
-    [Header("Minimize/Maximize")]
-    [SerializeField] private float miniScale;
-
-
 
 
 
     //Player Stats
 
     private float health;
-    private bool isMini = false;
 
     public Stack<Ability> getAbilityStack(){
         return abilityStack;
@@ -51,7 +40,7 @@ public class PlayerSingleton : MonoBehaviour
 
     public void pushAbilityStack(Ability value){
         abilityStack.Push(value);
-        //AbilityStackEvent.Invoke(value);
+        OnAbilityStack?.Invoke(value);
     }
 
     public Ability popAbilityStack()
@@ -59,7 +48,9 @@ public class PlayerSingleton : MonoBehaviour
 
          if (abilityStack.Count > 0)
         {
+            OnAbilityStack?.Invoke(Ability.None);
             return abilityStack.Pop();
+            
         }
         return Ability.None;
 
@@ -86,13 +77,9 @@ public class PlayerSingleton : MonoBehaviour
         _instance = this;
     }
 
-    private void Start()
-    {
-        Init();
-    }
-
     private void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Ability currentAbility = popAbilityStack();
@@ -107,7 +94,7 @@ public class PlayerSingleton : MonoBehaviour
                     Shoot();
                     break;
                 case Ability.Grante:
-                    Bomb();
+                    Explosion();
                     break;
                 case Ability.Minimize:
                     Minimize();
@@ -122,18 +109,6 @@ public class PlayerSingleton : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             pushAbilityStack(Ability.Dash);
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            pushAbilityStack(Ability.Shoot);
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            pushAbilityStack(Ability.Grante);
-        }
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            pushAbilityStack(Ability.Minimize);
         }
         if (Input.GetKeyDown(KeyCode.Tab))
         {
@@ -158,28 +133,11 @@ public class PlayerSingleton : MonoBehaviour
 
     private void Minimize()
     {
-        if (!isMini)
-        {
-            transform.localScale = new Vector3(miniScale, miniScale, miniScale);
-            isMini = true;
-
-        }
-        else
-        {
-            transform.localScale = new Vector3(1f, 1f, 1f);
-            isMini = false;
-        }
+        //todo
     }
-    private void Bomb()
+    private void Explosion()
     {
-        float rayCastDistance = 3f;
-        Debug.Log("Bomb");
-
-        if (Physics.Raycast(transform.position + Vector3.up * .1f, Vector3.down, out RaycastHit hit, rayCastDistance, groundLayer))
-        {
-            Debug.Log("Found ground");
-            GameObject bomb = Instantiate(bombPrefab, hit.point, Quaternion.identity);
-        }
+        //todo
     }
 
     public void DamagePlayer(float damage)
