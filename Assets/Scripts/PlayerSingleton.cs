@@ -1,13 +1,10 @@
 using Invector.vCharacterController;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-[System.Serializable]
-public class AbilityStackEvent : UnityEvent<int>
-{
-}
 public class PlayerSingleton : MonoBehaviour
 {
     public enum Ability {None, Dash, Shoot, Grante, Minimize};
@@ -43,6 +40,7 @@ public class PlayerSingleton : MonoBehaviour
 
     public void pushAbilityStack(Ability value){
         abilityStack.Push(value);
+        OnAbilityStack?.Invoke(value);
     }
 
     public Ability popAbilityStack()
@@ -79,10 +77,9 @@ public class PlayerSingleton : MonoBehaviour
         _instance = this;
     }
 
+    private void Update()
     {
-    }
-
-    {
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Ability currentAbility = popAbilityStack();
