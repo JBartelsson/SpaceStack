@@ -1,19 +1,16 @@
 using Invector.vCharacterController;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 
-[System.Serializable]
-public class AbilityStackEvent : UnityEvent<int>
-{
-}
 public class PlayerSingleton : MonoBehaviour
 {
     public enum Ability {None, Dash, Shoot, Grante, Minimize};
 
     private Stack<Ability> abilityStack = new Stack<Ability>();
+    public event Action<Ability> OnAbilityStack;
 
     bool isDashing = false;
     [Header("Character")]
@@ -43,7 +40,7 @@ public class PlayerSingleton : MonoBehaviour
 
     public void pushAbilityStack(Ability value){
         abilityStack.Push(value);
-        //AbilityStackEvent.Invoke(value);
+        OnAbilityStack?.Invoke(value);
     }
 
     public Ability popAbilityStack()
@@ -51,7 +48,9 @@ public class PlayerSingleton : MonoBehaviour
 
          if (abilityStack.Count > 0)
         {
+            OnAbilityStack?.Invoke(Ability.None);
             return abilityStack.Pop();
+            
         }
         return Ability.None;
 
@@ -78,13 +77,9 @@ public class PlayerSingleton : MonoBehaviour
         _instance = this;
     }
 
-    private void Start()
-    {
-        Init();
-    }
-
     private void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Ability currentAbility = popAbilityStack();
@@ -114,10 +109,6 @@ public class PlayerSingleton : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             pushAbilityStack(Ability.Dash);
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            pushAbilityStack(Ability.Shoot);
         }
         if (Input.GetKeyDown(KeyCode.Tab))
         {
