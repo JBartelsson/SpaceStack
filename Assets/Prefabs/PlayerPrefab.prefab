@@ -31,7 +31,7 @@ Transform:
   - {fileID: 5164042775343537401}
   - {fileID: 6898235685585452513}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5164042775343537400
 GameObject:
@@ -61,7 +61,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5164042775343537400}
   m_LocalRotation: {x: 0.0013653951, y: -0.9818259, z: 0.18964753, w: 0.0070688}
-  m_LocalPosition: {x: 0.18930817, y: 4.761044, z: 11.013312}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1793,7 +1793,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6898235685585452519}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.0000001872535}
-  m_LocalPosition: {x: 0.30631065, y: 2.9461932, z: 7.1816463}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1889,8 +1889,9 @@ MonoBehaviour:
   groundMinDistance: 0.25
   groundMaxDistance: 0.5
   slopeLimit: 45
-  dashVelocityForward: 10
-  dashVelocityUp: 0.4
+  dashVelocityForward: 12
+  dashVelocityUp: 0.6
+  dashTime: 0.8
 --- !u!114 &6898235685585452514
 MonoBehaviour:
   m_ObjectHideFlags: 0

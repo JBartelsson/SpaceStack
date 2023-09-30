@@ -18,8 +18,11 @@ public class PlayerSingleton : MonoBehaviour
     bool isDashing = false;
     [SerializeField] vThirdPersonController controller;
     [SerializeField] private KeyCode dash;
-    private Rigidbody rb;
 
+    //Player Stats
+    [SerializeField] private float MaxHealth = 100f;
+
+    private float health;
 
     public Stack<Ability> getAbilityStack(){
         return abilityStack;
@@ -63,7 +66,6 @@ public class PlayerSingleton : MonoBehaviour
     private void Awake()
     {
         _instance = this;
-        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -87,12 +89,18 @@ public class PlayerSingleton : MonoBehaviour
         }
     }
 
-    // Add other class methods here...
-
-    public void SomeMethod()
+    public void DamagePlayer(float damage)
     {
-        Debug.Log("It works.");
+        health -= damage;
+        if (health == 0)
+        {
+            Die();
+        }
     }
 
+    private void Die()
+    {
+        Debug.Log("Player died");
+    }
 
 }
