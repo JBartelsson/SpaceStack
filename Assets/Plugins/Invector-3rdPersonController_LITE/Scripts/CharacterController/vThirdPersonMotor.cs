@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Invector.vCharacterController
 {
@@ -54,6 +55,11 @@ namespace Invector.vCharacterController
         public float groundMaxDistance = 0.5f;
         [Tooltip("Max angle to walk")]
         [Range(30, 80)] public float slopeLimit = 75f;
+
+        private bool isDashing = false;
+        [SerializeField] private float dashVelocityForward;
+        [SerializeField] private float dashVelocityUp;
+        private Vector3 currentDashVelocity;
         #endregion
 
         #region Components
@@ -177,12 +183,21 @@ namespace Invector.vCharacterController
             if (_direction.magnitude > 1f)
                 _direction.Normalize();
 
-            Vector3 targetPosition = (useRootMotion ? animator.rootPosition : _rigidbody.position) + _direction * (stopMove ? 0 : moveSpeed) * Time.deltaTime;
+            Vector3 targetPosition;
+            targetPosition = (useRootMotion ? animator.rootPosition : _rigidbody.position) + _direction * (stopMove ? 0 : moveSpeed) * Time.deltaTime;
+            
             Vector3 targetVelocity = (targetPosition - transform.position) / Time.deltaTime;
 
             bool useVerticalVelocity = true;
             if (useVerticalVelocity) targetVelocity.y = _rigidbody.velocity.y;
-            _rigidbody.velocity = targetVelocity;
+            if (!isDashing)
+            {
+                _rigidbody.velocity = targetVelocity;
+            } else
+            {
+                _rigidbody.velocity = targetVelocity + currentDashVelocity;
+
+            }
         }
 
         public virtual void CheckSlopeLimit()
@@ -229,6 +244,20 @@ namespace Invector.vCharacterController
             Vector3 desiredForward = Vector3.RotateTowards(transform.forward, direction.normalized, rotationSpeed * Time.deltaTime, .1f);
             Quaternion _newRotation = Quaternion.LookRotation(desiredForward);
             transform.rotation = _newRotation;
+        }
+
+        public void Dash()
+        {
+            isDashing = true;
+            currentDashVelocity = transform.forward * dashVelocityForward + transform.up * dashVelocityUp;
+            StartCoroutine(ResetDash(.2f));
+        }
+
+        IEnumerator ResetDash(float time)
+        {
+           yield return new WaitForSeconds(time);
+           isDashing = false;
+            Debug.Log("Reset");
         }
 
         #endregion
