@@ -27,12 +27,20 @@ public class PlayerSingleton : MonoBehaviour
     [SerializeField] private Transform projectileSpawnpoint;
     [SerializeField] private float projectileSpeed;
     [SerializeField] private float projectileDamage;
+    [Header("Bombing")]
+    [SerializeField] private GameObject bombPrefab;
+    [SerializeField] private LayerMask groundLayer;
+    [Header("Minimize/Maximize")]
+    [SerializeField] private float miniScale;
+
+
 
 
 
     //Player Stats
 
     private float health;
+    private bool isMini = false;
 
     public Stack<Ability> getAbilityStack(){
         return abilityStack;
@@ -99,7 +107,7 @@ public class PlayerSingleton : MonoBehaviour
                     Shoot();
                     break;
                 case Ability.Grante:
-                    Explosion();
+                    Bomb();
                     break;
                 case Ability.Minimize:
                     Minimize();
@@ -118,6 +126,14 @@ public class PlayerSingleton : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O))
         {
             pushAbilityStack(Ability.Shoot);
+        }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            pushAbilityStack(Ability.Grante);
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            pushAbilityStack(Ability.Minimize);
         }
         if (Input.GetKeyDown(KeyCode.Tab))
         {
@@ -142,11 +158,28 @@ public class PlayerSingleton : MonoBehaviour
 
     private void Minimize()
     {
-        //todo
+        if (!isMini)
+        {
+            transform.localScale = new Vector3(miniScale, miniScale, miniScale);
+            isMini = true;
+
+        }
+        else
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+            isMini = false;
+        }
     }
-    private void Explosion()
+    private void Bomb()
     {
-        //todo
+        float rayCastDistance = 3f;
+        Debug.Log("Bomb");
+
+        if (Physics.Raycast(transform.position + Vector3.up * .1f, Vector3.down, out RaycastHit hit, rayCastDistance, groundLayer))
+        {
+            Debug.Log("Found ground");
+            GameObject bomb = Instantiate(bombPrefab, hit.point, Quaternion.identity);
+        }
     }
 
     public void DamagePlayer(float damage)
