@@ -7,23 +7,24 @@ public class PlayerSingleton : MonoBehaviour
     public enum Ability {Dash, Shoot, Grante, Minimize};
     private Stack<Ability> abilityStack = new Stack<Ability>();
 
-    public Ability getAbilityStack(){
+    public Stack<Ability> getAbilityStack(){
         return abilityStack;
     }
-    public void setAbilityStack(Ability value){
-        return abilityStack = value;
+    public void setAbilityStack(Stack<Ability> value){
+       abilityStack = value;
     }
 
     public void pushAbilityStack(Ability value){
-        abilityStack.Push(value)
+        abilityStack.Push(value);
     }
 
-    public Ability popAbilityStack(){
-        abilityStack.Pop(value)
+    public Ability popAbilityStack()
+    {
+        return abilityStack.Pop();
     }
 
     public Ability peekAbilityStack(){
-        abilityStack.Peek(value)
+        return abilityStack.Peek();
     }
 
     private static PlayerSingleton _instance; 
