@@ -20,14 +20,7 @@ public class Lever : TriggerObject
             if (_playerInRange)
             {
                 Switch();
-                if (_isActivated)
-                {
-                    _animator.SetBool("Active", true);
-                }
-                else
-                {
-                    _animator.SetBool("Active", false);
-                }
+                _animator.SetBool("Active", isActivated);
             }
         }
     }
