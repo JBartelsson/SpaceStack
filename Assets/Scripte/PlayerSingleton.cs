@@ -20,6 +20,7 @@ public class PlayerSingleton : MonoBehaviour
     [SerializeField] private KeyCode dash;
     private Rigidbody rb;
 
+
     public Stack<Ability> getAbilityStack(){
         return abilityStack;
     }
@@ -74,19 +75,6 @@ public class PlayerSingleton : MonoBehaviour
             //Vector3 forwardMotion = new Vector3(0, .1f, -100);
             //rb.AddForce(forwardMotion, ForceMode.Impulse);
         }
-    }
-
-    // Add other class methods here...
-
-    public void SomeMethod()
-    {
-        Debug.Log("It works.");
-    }
-
-
-//Nur für Test Zwecke Kann gelöscht werden!
-    public void Update()
-    {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             pushAbilityStack(Ability.Dash);
@@ -98,5 +86,13 @@ public class PlayerSingleton : MonoBehaviour
             Debug.Log("Popidi Pop: " + tmp.ToString());
         }
     }
+
+    // Add other class methods here...
+
+    public void SomeMethod()
+    {
+        Debug.Log("It works.");
+    }
+
 
 }

@@ -59,6 +59,7 @@ namespace Invector.vCharacterController
         private bool isDashing = false;
         [SerializeField] private float dashVelocityForward;
         [SerializeField] private float dashVelocityUp;
+        [SerializeField] private float dashTime;
         private Vector3 currentDashVelocity;
         #endregion
 
@@ -248,9 +249,10 @@ namespace Invector.vCharacterController
 
         public void Dash()
         {
+            if (isDashing) return;
             isDashing = true;
             currentDashVelocity = transform.forward * dashVelocityForward + transform.up * dashVelocityUp;
-            StartCoroutine(ResetDash(.2f));
+            StartCoroutine(ResetDash(dashTime));
         }
 
         IEnumerator ResetDash(float time)
