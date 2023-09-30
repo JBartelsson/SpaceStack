@@ -60,7 +60,8 @@ public class UiAbility : MonoBehaviour
             RectTransform new_rectTransform = new_obj.AddComponent<RectTransform>();
             UnityEngine.UI.Image mImage = new_obj.AddComponent<UnityEngine.UI.Image>();
             mImage.sprite = addSprite;
-            new_rectTransform.anchoredPosition = new Vector2(100, 100 + imageStack.Count * 50);
+            new_rectTransform.anchoredPosition = new Vector2(-500, -275 + imageStack.Count * 75);
+            new_rectTransform.sizeDelta = new Vector2(60, 60);
 
 
         }
