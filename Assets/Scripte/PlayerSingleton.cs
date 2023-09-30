@@ -4,9 +4,29 @@ using UnityEngine;
 
 public class PlayerSingleton : MonoBehaviour
 {
-    private static PlayerSingleton _instance;
+    public enum Ability {Dash, Shoot, Grante, Minimize};
+    private Stack<Ability> abilityStack = new Stack<Ability>();
 
-    // Add other class properties here...
+    public Ability getAbilityStack(){
+        return abilityStack;
+    }
+    public void setAbilityStack(Ability value){
+        return abilityStack = value;
+    }
+
+    public void pushAbilityStack(Ability value){
+        abilityStack.Push(value)
+    }
+
+    public Ability popAbilityStack(){
+        abilityStack.Pop(value)
+    }
+
+    public Ability peekAbilityStack(){
+        abilityStack.Peek(value)
+    }
+
+    private static PlayerSingleton _instance; 
 
     public static PlayerSingleton Instance
     {
@@ -14,7 +34,6 @@ public class PlayerSingleton : MonoBehaviour
             if (_instance == null) {
                 Debug.LogError("PlayerSingleton not instantiated.");
             }
-
             return _instance;
         }
     }
