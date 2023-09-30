@@ -13,10 +13,12 @@ public class vThirdPersonCamera : MonoBehaviour
     [Tooltip("Debug purposes, lock the camera behind the character for better align the states")]
     public bool lockCamera;
 
+
     public float rightOffset = 0f;
     public float defaultDistance = 2.5f;
     public float height = 1.4f;
     public float smoothFollow = 10f;
+    public float DashFollow = 10f;
     public float xMouseSensitivity = 3f;
     public float yMouseSensitivity = 3f;
     public float yMinLimit = -40f;
@@ -74,7 +76,7 @@ public class vThirdPersonCamera : MonoBehaviour
 
         targetLookAt = new GameObject("targetLookAt").transform;
         targetLookAt.position = currentTarget.position;
-        targetLookAt.hideFlags = HideFlags.HideInHierarchy;
+        //targetLookAt.hideFlags = HideFlags.HideInHierarchy;
         targetLookAt.rotation = currentTarget.rotation;
 
         mouseY = currentTarget.eulerAngles.x;
@@ -152,17 +154,18 @@ public class vThirdPersonCamera : MonoBehaviour
         if (currentTarget == null)
             return;
 
-        distance = Mathf.Lerp(distance, defaultDistance, smoothFollow * Time.deltaTime);
-        cullingDistance = Mathf.Lerp(cullingDistance, distance, Time.deltaTime);
-        var camDir = (forward * targetLookAt.forward) + (rightOffset * targetLookAt.right);
-
-        camDir = camDir.normalized;
-
         var targetPos = new Vector3(currentTarget.position.x, currentTarget.position.y + offSetPlayerPivot, currentTarget.position.z);
         currentTargetPos = targetPos;
         desired_cPos = targetPos + new Vector3(0, height, 0);
         current_cPos = currentTargetPos + new Vector3(0, currentHeight, 0);
         RaycastHit hitInfo;
+
+        //distance = Vector3.Distance(current_cPos, desired_cPos);
+        distance = Mathf.Lerp(distance, defaultDistance, smoothFollow * Time.deltaTime);
+        cullingDistance = Mathf.Lerp(cullingDistance, distance, Time.deltaTime);
+        var camDir = (forward * targetLookAt.forward) + (rightOffset * targetLookAt.right);
+
+        camDir = camDir.normalized;
 
         ClipPlanePoints planePoints = _camera.NearClipPlanePoints(current_cPos + (camDir * (distance)), clipPlaneMargin);
         ClipPlanePoints oldPoints = _camera.NearClipPlanePoints(desired_cPos + (camDir * distance), clipPlaneMargin);
@@ -202,6 +205,7 @@ public class vThirdPersonCamera : MonoBehaviour
         Quaternion newRot = Quaternion.Euler(mouseY, mouseX, 0);
         targetLookAt.rotation = Quaternion.Slerp(targetLookAt.rotation, newRot, smoothCameraRotation * Time.deltaTime);
         transform.position = current_cPos + (camDir * (distance));
+        //transform.position = Vector3.Lerp(current_cPos, camDir * distance, Time.deltaTime * DashFollow);
         var rotation = Quaternion.LookRotation((lookPoint) - transform.position);
 
         transform.rotation = rotation;
