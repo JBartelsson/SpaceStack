@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Prefabs/Door.prefab.meta
 guid: 9eddd6a1d645aa84c94c7cb26b03f1a0
 PrefabImporter:
+=======
+guid: ae69f89327535d24fb376fba30e41611
+DefaultImporter:
+>>>>>>> Stashed changes:Assets/blender/CanalTubeDrop.blend2.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
