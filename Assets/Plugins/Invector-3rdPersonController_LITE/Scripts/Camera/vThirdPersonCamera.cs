@@ -162,7 +162,6 @@ public class vThirdPersonCamera : MonoBehaviour
 
         //distance = Vector3.Distance(current_cPos, desired_cPos);
         distance = Mathf.Lerp(distance, defaultDistance, smoothFollow * Time.deltaTime);
-        Debug.Log(distance);
         cullingDistance = Mathf.Lerp(cullingDistance, distance, Time.deltaTime);
         var camDir = (forward * targetLookAt.forward) + (rightOffset * targetLookAt.right);
 

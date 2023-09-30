@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AcidProjectile : MonoBehaviour
+public class PlayerProjectile : MonoBehaviour
 {
     [SerializeField] private float projectileSpeed = 1f;
     private float damage;
@@ -22,19 +22,28 @@ public class AcidProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        Debug.Log(other.transform);
+        if (other.TryGetComponent<ShootingEnemy>(out ShootingEnemy enemy))
         {
-            PlayerSingleton.Instance.DamagePlayer(damage);
-            Debug.Log("Player damaged");
+            enemy.Damage(damage);
+        }
+        if (!other.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+
         }
         
-        Destroy(gameObject);
     }
 
     public void SetDamage(float damage)
     {
         Debug.Log($"set damage to" + damage);
         this.damage = damage;
+    }
+
+    public void SetSpeed(float speed)
+    {
+        projectileSpeed = speed;
     }
 
     private void DestroySelf()
