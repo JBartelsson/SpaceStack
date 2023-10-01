@@ -33,8 +33,6 @@ public class PlayerSingleton : MonoBehaviour
 
 
 
-
-
     //Player Stats
 
     private float health;

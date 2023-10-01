@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba6fe8ead08b294f837ce61e0d24b5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpType: 0
+  powerUpType: 4
   minimizeVisual: {fileID: 2988786930467636004}
   dashVisual: {fileID: 6810545659084138044}
   bombVisual: {fileID: 8010906046347354613}
