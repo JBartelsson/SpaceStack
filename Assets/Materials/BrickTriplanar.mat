@@ -49,9 +49,9 @@ Material:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
     - _Blend: 0.127
-    - _ColorBlend: 0.86
-    - _NormalStrength: 2.43
+    - _ColorBlend: 1
+    - _NormalStrength: 0.77
     - _Tiling: 0.89
     m_Colors:
-    - _BlendColor: {r: 0, g: 0, b: 0, a: 0}
+    - _BlendColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
