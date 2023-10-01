@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class PlayerSingleton : MonoBehaviour
 {
@@ -29,7 +29,7 @@ public class PlayerSingleton : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [Header("Minimize/Maximize")]
     [SerializeField] private float miniScale;
-    private bool isMini = false;
+    public bool isMini = false;
 
 
 
@@ -116,6 +116,10 @@ public class PlayerSingleton : MonoBehaviour
             //Vector3 forwardMotion = new Vector3(0, .1f, -100);
             //rb.AddForce(forwardMotion, ForceMode.Impulse);
         }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            pushAbilityStack(Ability.Grante);
+        }
         if (Input.GetKeyDown(KeyCode.P))
         {
             pushAbilityStack(Ability.Dash);
@@ -178,6 +182,7 @@ public class PlayerSingleton : MonoBehaviour
 
     private void Die()
     {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         transform.position = spawnPoint.position;
         transform.rotation = spawnPoint.rotation;
     }

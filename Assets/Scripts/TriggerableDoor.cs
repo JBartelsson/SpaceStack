@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TriggerableDoor : Triggerable
 {
+    [SerializeField] private bool SlideDown;
+    
     private Animator _animator;
 
     void Start()
@@ -15,7 +14,6 @@ public class TriggerableDoor : Triggerable
     
     public override void Trigger(bool active)
     {
-        base.Trigger(active);
-        _animator.SetBool("Open", active);
+        _animator.SetBool(SlideDown ? "Down" : "Up", active);
     }
 }
