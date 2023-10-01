@@ -8,8 +8,11 @@ public class Bomb : MonoBehaviour
     [SerializeField] float bombTimerMax;
     [SerializeField] float bombRadius;
     [SerializeField] LayerMask destructionLayer;
+    [SerializeField] ParticleSystem particle;
+    [SerializeField] GameObject visual;
 
     private float bombTimer;
+    private bool detonated = false;
     void Start()
     {
         bombTimer = bombTimerMax;
@@ -18,10 +21,12 @@ public class Bomb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (detonated) return;
         bombTimer -= Time.deltaTime;
         if (bombTimer < 0)
         {
             Detonate();
+            detonated = true;
         }
     }
 
@@ -41,6 +46,13 @@ public class Bomb : MonoBehaviour
                 player.DamagePlayer(damage);
             }
         }
+        particle.Play();
+        Destroy(visual.gameObject);
+        Invoke(nameof(DestroyAll) , 2f);
+    }
+
+    private void DestroyAll()
+    {
         Destroy(gameObject);
     }
 }
