@@ -17,7 +17,7 @@ public class WinMenuButtons : MonoBehaviour
         
         Debug.Log(SceneManager.sceneCountInBuildSettings);
         
-        if (_nextLevelIndex > SceneManager.sceneCountInBuildSettings)
+        if (_nextLevelIndex > SceneManager.sceneCountInBuildSettings - 1)
         {
             nextLevelButton.interactable = false;
         }
