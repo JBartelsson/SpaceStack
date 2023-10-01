@@ -2001,7 +2001,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  miniScale: 0.25
+  miniScale: 0.5
   isMini: 0
 --- !u!1 &6898235685591837766
 GameObject:
