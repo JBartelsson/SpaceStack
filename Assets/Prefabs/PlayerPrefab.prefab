@@ -2003,7 +2003,8 @@ MonoBehaviour:
     m_Bits: 64
   vCamera: {fileID: 5164042775343537403}
   miniScale: 0.25
-  miniCameraHeight: 0
+  miniCameraHeight: 0.7
+  miniCameraDistance: 1.7
   isMini: 0
 --- !u!1 &6898235685591837766
 GameObject:
