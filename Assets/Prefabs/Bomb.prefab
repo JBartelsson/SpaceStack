@@ -127,7 +127,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   particle: {fileID: 3930862396964077971}
-  visual: {fileID: 0}
+  visual: {fileID: 589794796484580281}
 --- !u!1 &8905559606980825127
 GameObject:
   m_ObjectHideFlags: 0
@@ -5094,5 +5094,10 @@ PrefabInstance:
 --- !u!4 &244478139368343811 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e14119649f8c9384da02146c9ff2db9a, type: 3}
+  m_PrefabInstance: {fileID: 355281824808398568}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &589794796484580281 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e14119649f8c9384da02146c9ff2db9a, type: 3}
   m_PrefabInstance: {fileID: 355281824808398568}
   m_PrefabAsset: {fileID: 0}

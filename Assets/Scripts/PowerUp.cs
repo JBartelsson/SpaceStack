@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class PowerUp : MonoBehaviour
@@ -11,6 +12,8 @@ public class PowerUp : MonoBehaviour
     [SerializeField] private GameObject dashVisual;
     [SerializeField] private GameObject bombVisual;
     [SerializeField] private GameObject shootVisual;
+
+    public float roatioSpeed = 1.0f;
 
     private void Awake()
     {
@@ -48,6 +51,7 @@ public class PowerUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.Rotate(0f, roatioSpeed * Time.deltaTime, 0f, Space.Self);
     }
 
     private void OnTriggerEnter(Collider other)
