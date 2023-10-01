@@ -30,8 +30,14 @@ public class PlayerSingleton : MonoBehaviour
     [SerializeField] private GameObject bombPrefab;
     [SerializeField] private LayerMask groundLayer;
     [Header("Minimize/Maximize")]
+    [SerializeField] vThirdPersonCamera vCamera;
     [SerializeField] private float miniScale;
+    [SerializeField] private float miniCameraHeight;
+    [SerializeField] private float miniCameraDistance;
     public bool isMini = false;
+
+    private float oldCameraHeight;
+    private float oldCameraDistance;
     
     //Player Stats
     private float health;
@@ -83,6 +89,8 @@ public class PlayerSingleton : MonoBehaviour
     private void Start()
     {
         Init();
+        oldCameraHeight = vCamera.height;
+        oldCameraDistance = vCamera.defaultDistance;
     }
     private void Update()
     {
@@ -152,11 +160,16 @@ public class PlayerSingleton : MonoBehaviour
         {
             transform.localScale = new Vector3(miniScale, miniScale, miniScale);
             isMini = true;
+            vCamera.height = miniCameraHeight;
+            vCamera.defaultDistance = miniCameraDistance;
         }
         else
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
             isMini = false;
+            vCamera.height = oldCameraHeight;
+            vCamera.defaultDistance = oldCameraDistance;
+
         }
     }
     private void Bomb()
