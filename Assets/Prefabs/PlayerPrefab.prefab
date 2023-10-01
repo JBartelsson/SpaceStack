@@ -1920,7 +1920,7 @@ MonoBehaviour:
     m_Bits: 65
   groundMinDistance: 0.25
   groundMaxDistance: 0.5
-  slopeLimit: 45
+  slopeLimit: 80
   dashVelocityForward: 12
   dashVelocityUp: 0.9
   dashTime: 0.4

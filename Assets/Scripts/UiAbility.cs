@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -14,18 +15,20 @@ public class UiAbility : MonoBehaviour
     [SerializeField] public Sprite minimizeImage;
     [SerializeField] public Sprite grenadeImage;
     [SerializeField] public Sprite circle;
-    [SerializeField] public GameObject arrow;
 
-    private RectTransform arrowTransform;
-    
+
+    [SerializeField] public Color circleColor = new Color(1, 1, 1);
+    [SerializeField] public Color defaultCircleColor = new Color(1, 1, 1);
+
+
     Stack<GameObject> imageStack = new Stack<GameObject>();
+    Stack<GameObject> circleimageStack = new Stack<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
         PlayerSingleton.Instance.OnAbilityStack += OnAbilityStackl;
 
-        arrowTransform = arrow.GetComponent<RectTransform>();
     }
 
     private void OnAbilityStackl(PlayerSingleton.Ability obj)
@@ -34,20 +37,14 @@ public class UiAbility : MonoBehaviour
         if (obj == Ability.None)
         {
             
-            
             // Pop
             Destroy(imageStack.Pop());
-            Destroy(imageStack.Pop());
+            Destroy(circleimageStack.Pop());
             
-            arrowTransform.anchoredPosition = new Vector2(100, -25 + (1 + imageStack.Count / 2) * 75);
 
             if (imageStack.Count > 0)
             {
-                arrow.SetActive(true);
-            }
-            else
-            {
-                arrow.SetActive(false);
+                circleimageStack.Peek().GetComponent<UnityEngine.UI.Image>().color = circleColor;
             }
         }
         else
@@ -74,6 +71,12 @@ public class UiAbility : MonoBehaviour
                     break;
             }
 
+            //Set First elemtens Color to default color
+            if (imageStack.Count > 0)
+            {
+                circleimageStack.Peek().GetComponent<UnityEngine.UI.Image>().color = defaultCircleColor;
+            }
+
             // Symbol
             GameObject new_obj = new GameObject();
             new_obj.transform.parent = transform;
@@ -84,7 +87,7 @@ public class UiAbility : MonoBehaviour
             new_rectTransform.anchorMax = new Vector2(0, 0);
             new_rectTransform.anchorMin = new Vector2(0, 0);
             new_rectTransform.sizeDelta = new Vector2(40, 40);
-            new_rectTransform.anchoredPosition = new Vector2(50, -25 + (1 + imageStack.Count / 2) * 75);
+            new_rectTransform.anchoredPosition = new Vector2(50, 40 + ( imageStack.Count) * 75);
 
             // Circle
             GameObject circleObject = new GameObject();
@@ -93,24 +96,16 @@ public class UiAbility : MonoBehaviour
             RectTransform newRectTransform = circleObject.AddComponent<RectTransform>();
             UnityEngine.UI.Image symbolImage = circleObject.AddComponent<UnityEngine.UI.Image>();
             symbolImage.sprite = circle;
+            symbolImage.color = circleColor;
             newRectTransform.anchorMax = new Vector2(0, 0);
             newRectTransform.anchorMin = new Vector2(0, 0);
             newRectTransform.sizeDelta = new Vector2(60, 60);
-            newRectTransform.anchoredPosition = new Vector2(50, -25 + (1 + imageStack.Count / 2) * 75);
+            newRectTransform.anchoredPosition = new Vector2(50, 40 + (circleimageStack.Count) * 75);
 
-            arrowTransform.anchoredPosition = new Vector2(100, -25 + (1 + imageStack.Count / 2) * 75);
 
             imageStack.Push(new_obj);
-            imageStack.Push(circleObject);
-            
-            if (imageStack.Count > 0)
-            {
-                arrow.SetActive(true);
-            }
-            else
-            {
-                arrow.SetActive(false);
-            }
+            circleimageStack.Push(circleObject);
+           
         }
     }
 }
