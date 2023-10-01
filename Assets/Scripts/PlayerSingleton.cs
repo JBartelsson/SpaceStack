@@ -29,7 +29,7 @@ public class PlayerSingleton : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [Header("Minimize/Maximize")]
     [SerializeField] private float miniScale;
-    private bool isMini = false;
+    public bool isMini = false;
 
 
 
