@@ -1712,11 +1712,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5707097906580066938, guid: a4e3e1e5b36bd814793a129364b4c6c0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 39.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707097906580066938, guid: a4e3e1e5b36bd814793a129364b4c6c0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 39.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707097906580066938, guid: a4e3e1e5b36bd814793a129364b4c6c0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 39.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707097906580066938, guid: a4e3e1e5b36bd814793a129364b4c6c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.352
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204010329849752387, guid: a4e3e1e5b36bd814793a129364b4c6c0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8206966298139106169, guid: a4e3e1e5b36bd814793a129364b4c6c0, type: 3}
       propertyPath: m_Name
       value: Stone
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6204010329849752387, guid: a4e3e1e5b36bd814793a129364b4c6c0, type: 3}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a4e3e1e5b36bd814793a129364b4c6c0, type: 3}
 --- !u!1001 &638266074
