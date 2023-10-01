@@ -27,6 +27,16 @@ public class TriggerablePressurePlate : TriggerObject
         if (other != null) { 
             if (other.CompareTag("Cube") || other.CompareTag("Player"))
             {
+                if (other.CompareTag("Player"))
+                {
+                    if (other.TryGetComponent<PlayerSingleton>(out PlayerSingleton player))
+                    {
+                        if (player.isMini)
+                        {
+                            return;
+                        }
+                    }
+                }
                 GetComponent<MeshRenderer>().enabled = true;
                 collisionList.Add(other.gameObject);
                 if (!isActivated)

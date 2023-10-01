@@ -5,14 +5,9 @@ using UnityEngine;
 public abstract class Triggerable : MonoBehaviour
 {
     [SerializeField] protected TriggerObject trigger;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
     public virtual void Trigger(bool active)
     {
-        Debug.LogWarning("Trigger is not overriden!");
+        Debug.LogWarning("Trigger is not overridden!");
     }
 }
