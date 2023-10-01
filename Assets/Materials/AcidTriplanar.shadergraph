@@ -32,6 +32,9 @@
         },
         {
             "m_Id": "bf7b32b939c2436ca6d42af0c8954a2c"
+        },
+        {
+            "m_Id": "b8abf08576d743429d1c4353b993313f"
         }
     ],
     "m_Keywords": [],
@@ -965,6 +968,9 @@
         },
         {
             "m_Id": "bf7b32b939c2436ca6d42af0c8954a2c"
+        },
+        {
+            "m_Id": "b8abf08576d743429d1c4353b993313f"
         }
     ]
 }
@@ -2272,7 +2278,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
     "m_ObjectId": "85146977ca6445bcb2ffa7448fb7a7b0",
     "m_Id": 0,
-    "m_DisplayName": "Texture",
+    "m_DisplayName": "AcidTexture",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -2563,11 +2569,11 @@
     "m_Guid": {
         "m_GuidSerialized": "778a362d-1fca-4572-89f4-0a8881880c25"
     },
-    "m_Name": "Texture",
+    "m_Name": "AcidTexture",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Texture",
-    "m_DefaultReferenceName": "_Texture",
-    "m_OverrideReferenceName": "",
+    "m_RefNameGeneratedByDisplayName": "AcidTexture",
+    "m_DefaultReferenceName": "_AcidTexture",
+    "m_OverrideReferenceName": "_AcidTexture",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
@@ -3118,6 +3124,36 @@
     "m_Value": 1.0,
     "m_DefaultValue": 1.0,
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Texture2DShaderProperty",
+    "m_ObjectId": "b8abf08576d743429d1c4353b993313f",
+    "m_Guid": {
+        "m_GuidSerialized": "e641bca5-c5d0-4896-a293-16f02a69afe4"
+    },
+    "m_Name": "MainTexture",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "MainTexture",
+    "m_DefaultReferenceName": "_MainTexture",
+    "m_OverrideReferenceName": "_MainTex",
+    "m_GeneratePropertyBlock": false,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": {
+        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_Guid": ""
+    },
+    "isMainTexture": false,
+    "useTilingAndOffset": false,
+    "m_Modifiable": true,
+    "m_DefaultType": 0
 }
 
 {

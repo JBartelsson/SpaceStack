@@ -35,13 +35,13 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _Blend: 0
+    - _Blend: 0.513
     - _BlendOpacity: 0.06
-    - _ColorBlend: 1.46
+    - _ColorBlend: 1.27
     - _Depth: -0.85
     - _NormalStrength: 0
     - _Offset: 15.55
-    - _Tiling: 0.35
+    - _Tiling: 0.41
     m_Colors:
     - _BlendColor: {r: 0.041301727, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
