@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 455684217036816522}
   - component: {fileID: 3825431118103566042}
   - component: {fileID: 7699249018998753521}
-  - component: {fileID: 7990277237487294412}
   m_Layer: 0
   m_Name: BombVisual
   m_TagString: Untagged
@@ -84,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7990277237487294412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3594258390221017301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 957cb37f19442424b8d89170367e3709, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bombTimerMax: 3
 --- !u!1 &3908487161423862324
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,6 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3073988068630146047}
+  - component: {fileID: 4460822286283657414}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -129,3 +116,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4460822286283657414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3908487161423862324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957cb37f19442424b8d89170367e3709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombTimerMax: 3
+  bombRadius: 5
+  destructionLayer:
+    serializedVersion: 2
+    m_Bits: 128

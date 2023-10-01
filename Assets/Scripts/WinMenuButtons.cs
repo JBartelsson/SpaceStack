@@ -14,11 +14,13 @@ public class WinMenuButtons : MonoBehaviour
     private void Start()
     {
         _nextLevelIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        
 
-        if (_nextLevelIndex > 10)
+        if (_nextLevelIndex > SceneManager.sceneCount)
         {
             nextLevelButton.interactable = false;
         }
+        gameObject.SetActive(false);
     }
 
     public void LoadNextLevel()

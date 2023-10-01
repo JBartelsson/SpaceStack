@@ -116,9 +116,9 @@ public class PlayerSingleton : MonoBehaviour
             //Vector3 forwardMotion = new Vector3(0, .1f, -100);
             //rb.AddForce(forwardMotion, ForceMode.Impulse);
         }
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.B))
         {
-            pushAbilityStack(Ability.Dash);
+            pushAbilityStack(Ability.Grante);
         }
         if (Input.GetKeyDown(KeyCode.Tab))
         {

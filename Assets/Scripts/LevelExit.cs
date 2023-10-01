@@ -25,8 +25,8 @@ public class LevelExit : MonoBehaviour
     {
         while (Time.timeScale > 0.01f)
         {
-            yield return new WaitForSeconds(0.05f);
-            Time.timeScale -= 0.1f;
+            yield return null;
+            Time.timeScale -= Time.fixedDeltaTime / 10 ;
 
             if (Time.timeScale < 0.1f)
             {
