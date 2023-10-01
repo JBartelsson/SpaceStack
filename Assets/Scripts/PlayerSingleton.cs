@@ -120,6 +120,10 @@ public class PlayerSingleton : MonoBehaviour
         {
             pushAbilityStack(Ability.Grante);
         }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            pushAbilityStack(Ability.Dash);
+        }
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             Ability tmp = popAbilityStack();
