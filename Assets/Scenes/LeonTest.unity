@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3945662002904914492, guid: e681820aa57f46b48bd2fa856abbce57, type: 3}
+      propertyPath: powerUpType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4736917339728031368, guid: e681820aa57f46b48bd2fa856abbce57, type: 3}
       propertyPath: m_Name
       value: PowerUp (1)
@@ -428,10 +432,6 @@ PrefabInstance:
     - target: {fileID: 3185032073593176937, guid: 359b0bfb5ac0dc14c880a38cc630950e, type: 3}
       propertyPath: m_Name
       value: PlayerPrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 6898235685585452315, guid: 359b0bfb5ac0dc14c880a38cc630950e, type: 3}
-      propertyPath: miniScale
-      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 9011945890523116200, guid: 359b0bfb5ac0dc14c880a38cc630950e, type: 3}
       propertyPath: m_RootOrder
