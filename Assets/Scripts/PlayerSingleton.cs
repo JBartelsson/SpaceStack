@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class PlayerSingleton : MonoBehaviour
 {
@@ -178,6 +178,7 @@ public class PlayerSingleton : MonoBehaviour
 
     private void Die()
     {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         transform.position = spawnPoint.position;
         transform.rotation = spawnPoint.rotation;
     }
