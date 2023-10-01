@@ -657,7 +657,7 @@ PrefabInstance:
     - target: {fileID: 3349591229489876044, guid: 1c48bd4973122a9458f87b95cda8dc02, type: 3}
       propertyPath: winMenu
       value: 
-      objectReference: {fileID: 5366447113172501352, guid: d6b8faffd8711a84c9e9f4dcb64a269a, type: 3}
+      objectReference: {fileID: 1073381671}
     - target: {fileID: 7830358032703217958, guid: 1c48bd4973122a9458f87b95cda8dc02, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -3621,6 +3621,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ed524d7fb2be7540bcd46a2a68119a4, type: 3}
+--- !u!1 &1073381671 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5366447113172501352, guid: d6b8faffd8711a84c9e9f4dcb64a269a, type: 3}
+  m_PrefabInstance: {fileID: 1784600326}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1087497922 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4977669003394640028, guid: e20db13b3fb8b4e418416ff7d688eaca, type: 3}
