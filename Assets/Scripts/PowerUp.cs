@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class PowerUp : MonoBehaviour
@@ -50,6 +51,7 @@ public class PowerUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.Rotate(0f, roatioSpeed * Time.deltaTime, 0f, Space.Self);
     }
 
     private void OnTriggerEnter(Collider other)
