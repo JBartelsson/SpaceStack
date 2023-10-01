@@ -20,7 +20,6 @@ public class WinMenuButtons : MonoBehaviour
         {
             nextLevelButton.interactable = false;
         }
-        gameObject.SetActive(false);
     }
 
     public void LoadNextLevel()
