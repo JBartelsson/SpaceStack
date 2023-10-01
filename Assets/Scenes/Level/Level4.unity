@@ -185,6 +185,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 718162851860482062, guid: b79893d4eccfd4b9789c6c4ef118030d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 68c28644fec98d544a71d82da4c13e23, type: 2}
     - target: {fileID: 4032061295081979442, guid: b79893d4eccfd4b9789c6c4ef118030d, type: 3}
       propertyPath: m_Name
       value: Prop_Debris01
@@ -2417,6 +2421,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5428516516051468218, guid: 960e5dab562254bc8a658ef51bedc9cc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 68c28644fec98d544a71d82da4c13e23, type: 2}
     - target: {fileID: 8943284874273100998, guid: 960e5dab562254bc8a658ef51bedc9cc, type: 3}
       propertyPath: m_RootOrder
       value: 2
