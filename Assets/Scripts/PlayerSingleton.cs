@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class PlayerSingleton : MonoBehaviour
 {
@@ -12,7 +12,9 @@ public class PlayerSingleton : MonoBehaviour
     private Stack<Ability> abilityStack = new Stack<Ability>();
     public event Action<Ability> OnAbilityStack;
 
+    [Header("Dashing")]
     bool isDashing = false;
+    [SerializeField] private ParticleSystem dashParticles;
     [Header("Character")]
     [SerializeField] vThirdPersonController controller;
     [SerializeField] private KeyCode dash;
@@ -28,13 +30,16 @@ public class PlayerSingleton : MonoBehaviour
     [SerializeField] private GameObject bombPrefab;
     [SerializeField] private LayerMask groundLayer;
     [Header("Minimize/Maximize")]
+    [SerializeField] vThirdPersonCamera vCamera;
     [SerializeField] private float miniScale;
-    private bool isMini = false;
+    [SerializeField] private float miniCameraHeight;
+    [SerializeField] private float miniCameraDistance;
+    public bool isMini = false;
 
-
-
+    private float oldCameraHeight;
+    private float oldCameraDistance;
+    
     //Player Stats
-
     private float health;
 
     public Stack<Ability> getAbilityStack(){
@@ -51,18 +56,16 @@ public class PlayerSingleton : MonoBehaviour
 
     public Ability popAbilityStack()
     {
-
-         if (abilityStack.Count > 0)
-        {
+         if (abilityStack.Count > 0) 
+         {
             OnAbilityStack?.Invoke(Ability.None);
-            return abilityStack.Pop();
-            
-        }
-        return Ability.None;
-
+            return abilityStack.Pop(); 
+         } 
+         return Ability.None;
     }
 
-    public Ability peekAbilityStack(){
+    public Ability peekAbilityStack()
+    {
         return abilityStack.Peek();
     }
 
@@ -86,10 +89,11 @@ public class PlayerSingleton : MonoBehaviour
     private void Start()
     {
         Init();
+        oldCameraHeight = vCamera.height;
+        oldCameraDistance = vCamera.defaultDistance;
     }
     private void Update()
     {
-        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Ability currentAbility = popAbilityStack();
@@ -116,6 +120,11 @@ public class PlayerSingleton : MonoBehaviour
             //Vector3 forwardMotion = new Vector3(0, .1f, -100);
             //rb.AddForce(forwardMotion, ForceMode.Impulse);
         }
+        
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            pushAbilityStack(Ability.Grante);
+        }
         if (Input.GetKeyDown(KeyCode.P))
         {
             pushAbilityStack(Ability.Dash);
@@ -125,12 +134,17 @@ public class PlayerSingleton : MonoBehaviour
             Ability tmp = popAbilityStack();
             Debug.Log("Popidi Pop: " + tmp.ToString());
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     private void Dash()
     {
         controller.Dash();
-
+        Instantiate(dashParticles, transform);
     }
     private void Shoot()
     {
@@ -138,7 +152,6 @@ public class PlayerSingleton : MonoBehaviour
         PlayerProjectile playerProjectile = projectile.GetComponent<PlayerProjectile>();
         playerProjectile.SetDamage(projectileDamage);
         playerProjectile.SetSpeed(projectileSpeed);
-
     }
 
     private void Minimize()
@@ -147,12 +160,16 @@ public class PlayerSingleton : MonoBehaviour
         {
             transform.localScale = new Vector3(miniScale, miniScale, miniScale);
             isMini = true;
-
+            vCamera.height = miniCameraHeight;
+            vCamera.defaultDistance = miniCameraDistance;
         }
         else
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
             isMini = false;
+            vCamera.height = oldCameraHeight;
+            vCamera.defaultDistance = oldCameraDistance;
+
         }
     }
     private void Bomb()
@@ -178,6 +195,7 @@ public class PlayerSingleton : MonoBehaviour
 
     private void Die()
     {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         transform.position = spawnPoint.position;
         transform.rotation = spawnPoint.rotation;
     }
@@ -188,5 +206,4 @@ public class PlayerSingleton : MonoBehaviour
         transform.rotation = spawnPoint.rotation;
         health = MaxHealth;
     }
-
 }
