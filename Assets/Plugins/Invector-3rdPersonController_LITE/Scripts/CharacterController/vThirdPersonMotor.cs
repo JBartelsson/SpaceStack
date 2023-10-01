@@ -196,7 +196,7 @@ namespace Invector.vCharacterController
                 _rigidbody.velocity = targetVelocity;
             } else
             {
-                _rigidbody.velocity = targetVelocity + currentDashVelocity;
+                _rigidbody.velocity = currentDashVelocity;
 
             }
         }

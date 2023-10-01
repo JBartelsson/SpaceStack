@@ -30,11 +30,8 @@ public class PlayerSingleton : MonoBehaviour
     [Header("Minimize/Maximize")]
     [SerializeField] private float miniScale;
     public bool isMini = false;
-
-
-
+    
     //Player Stats
-
     private float health;
 
     public Stack<Ability> getAbilityStack(){
@@ -51,18 +48,16 @@ public class PlayerSingleton : MonoBehaviour
 
     public Ability popAbilityStack()
     {
-
-         if (abilityStack.Count > 0)
-        {
+         if (abilityStack.Count > 0) 
+         {
             OnAbilityStack?.Invoke(Ability.None);
-            return abilityStack.Pop();
-            
-        }
-        return Ability.None;
-
+            return abilityStack.Pop(); 
+         } 
+         return Ability.None;
     }
 
-    public Ability peekAbilityStack(){
+    public Ability peekAbilityStack()
+    {
         return abilityStack.Peek();
     }
 
@@ -89,7 +84,6 @@ public class PlayerSingleton : MonoBehaviour
     }
     private void Update()
     {
-        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Ability currentAbility = popAbilityStack();
@@ -116,21 +110,30 @@ public class PlayerSingleton : MonoBehaviour
             //Vector3 forwardMotion = new Vector3(0, .1f, -100);
             //rb.AddForce(forwardMotion, ForceMode.Impulse);
         }
+        
         if (Input.GetKeyDown(KeyCode.B))
         {
             pushAbilityStack(Ability.Grante);
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            pushAbilityStack(Ability.Dash);
         }
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             Ability tmp = popAbilityStack();
             Debug.Log("Popidi Pop: " + tmp.ToString());
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     private void Dash()
     {
         controller.Dash();
-
     }
     private void Shoot()
     {
@@ -138,7 +141,6 @@ public class PlayerSingleton : MonoBehaviour
         PlayerProjectile playerProjectile = projectile.GetComponent<PlayerProjectile>();
         playerProjectile.SetDamage(projectileDamage);
         playerProjectile.SetSpeed(projectileSpeed);
-
     }
 
     private void Minimize()
@@ -147,7 +149,6 @@ public class PlayerSingleton : MonoBehaviour
         {
             transform.localScale = new Vector3(miniScale, miniScale, miniScale);
             isMini = true;
-
         }
         else
         {
@@ -189,5 +190,4 @@ public class PlayerSingleton : MonoBehaviour
         transform.rotation = spawnPoint.rotation;
         health = MaxHealth;
     }
-
 }

@@ -1917,13 +1917,13 @@ MonoBehaviour:
   limitFallVelocity: -15
   groundLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 65
   groundMinDistance: 0.25
   groundMaxDistance: 0.5
   slopeLimit: 45
   dashVelocityForward: 12
-  dashVelocityUp: 0.6
-  dashTime: 0.8
+  dashVelocityUp: 0.9
+  dashTime: 0.4
 --- !u!114 &6898235685585452514
 MonoBehaviour:
   m_ObjectHideFlags: 0
