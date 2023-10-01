@@ -1988,19 +1988,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6bd5c5ad353d34dae565b4d562c00d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dashParticles: {fileID: 6658396251062863416, guid: c675fa7feaada1d4aa744e01e94602dc, type: 3}
   controller: {fileID: 6898235685585452515}
   dash: 32
   MaxHealth: 100
-  spawnPoint: {fileID: 0}
+  spawnPoint: {fileID: 9011945890523116200}
   projectilePrefab: {fileID: 6650616739989489923, guid: 114088812270e2a498bcb37669103ebd, type: 3}
   projectileSpawnpoint: {fileID: 4147569233322689239}
   projectileSpeed: 5
   projectileDamage: 100
-  bombPrefab: {fileID: 0}
+  bombPrefab: {fileID: 3908487161423862324, guid: 3c2ed22fe4800c8408c995243dd332fa, type: 3}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
-  miniScale: 0
+    m_Bits: 64
+  miniScale: 0.5
   isMini: 0
 --- !u!1 &6898235685591837766
 GameObject:
