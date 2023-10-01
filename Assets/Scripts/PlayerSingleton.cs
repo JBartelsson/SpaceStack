@@ -24,6 +24,14 @@ public class PlayerSingleton : MonoBehaviour
     [SerializeField] private Transform projectileSpawnpoint;
     [SerializeField] private float projectileSpeed;
     [SerializeField] private float projectileDamage;
+    [Header("Bombing")]
+    [SerializeField] private GameObject bombPrefab;
+    [SerializeField] private LayerMask groundLayer;
+    [Header("Minimize/Maximize")]
+    [SerializeField] private float miniScale;
+    private bool isMini = false;
+
+
 
 
 
@@ -77,6 +85,10 @@ public class PlayerSingleton : MonoBehaviour
         _instance = this;
     }
 
+    private void Start()
+    {
+        Init();
+    }
     private void Update()
     {
         
@@ -94,7 +106,7 @@ public class PlayerSingleton : MonoBehaviour
                     Shoot();
                     break;
                 case Ability.Grante:
-                    Explosion();
+                    Bomb();
                     break;
                 case Ability.Minimize:
                     Minimize();
@@ -133,11 +145,28 @@ public class PlayerSingleton : MonoBehaviour
 
     private void Minimize()
     {
-        //todo
+        if (!isMini)
+        {
+            transform.localScale = new Vector3(miniScale, miniScale, miniScale);
+            isMini = true;
+
+        }
+        else
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+            isMini = false;
+        }
     }
-    private void Explosion()
+    private void Bomb()
     {
-        //todo
+        float rayCastDistance = 3f;
+        Debug.Log("Bomb");
+
+        if (Physics.Raycast(transform.position + Vector3.up * .1f, Vector3.down, out RaycastHit hit, rayCastDistance, groundLayer))
+        {
+            Debug.Log("Found ground");
+            GameObject bomb = Instantiate(bombPrefab, hit.point, Quaternion.identity);
+        }
     }
 
     public void DamagePlayer(float damage)

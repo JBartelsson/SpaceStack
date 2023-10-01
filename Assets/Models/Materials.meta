@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Models/Materials.meta
 guid: d15b2dc0799593241a3a362889eaf19f
 folderAsset: yes
+=======
+guid: be573cd4234ec0444838a94117b90b6c
+>>>>>>> Stashed changes:Assets/blender/CanalTubeDrop.blend1.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
