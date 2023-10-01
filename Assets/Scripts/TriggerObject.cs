@@ -4,36 +4,29 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class TriggerObject : MonoBehaviour
 {
-    public bool _isActivated;
-
-    public event Action<bool> onTrigger;
+    public bool isActivated = false;
+    
+    public event Action<bool> OnTrigger;
 
     public void Activate()
     {
-        _isActivated = true;
-        onTrigger.Invoke(true);
+        isActivated = true;
+        OnTrigger?.Invoke(true);
     }
 
     public void Deactivate()
     {
-        _isActivated = false;
-        onTrigger.Invoke(false);
+        isActivated = false;
+        OnTrigger?.Invoke(false);
     }
     
     public void Switch()
-    {
-        if (_isActivated)
-        {
-            _isActivated = false;
-            onTrigger.Invoke(false);
-        }
-        else
-        {
-            _isActivated = true;
-            onTrigger.Invoke(true);
-        }
+    { 
+        isActivated = !isActivated;
+        OnTrigger?.Invoke(isActivated);
     }
 }
