@@ -12,7 +12,9 @@ public class PlayerSingleton : MonoBehaviour
     private Stack<Ability> abilityStack = new Stack<Ability>();
     public event Action<Ability> OnAbilityStack;
 
+    [Header("Dashing")]
     bool isDashing = false;
+    [SerializeField] private ParticleSystem dashParticles;
     [Header("Character")]
     [SerializeField] vThirdPersonController controller;
     [SerializeField] private KeyCode dash;
@@ -134,6 +136,7 @@ public class PlayerSingleton : MonoBehaviour
     private void Dash()
     {
         controller.Dash();
+        Instantiate(dashParticles, transform);
     }
     private void Shoot()
     {
