@@ -1920,7 +1920,7 @@ MonoBehaviour:
     m_Bits: 65
   groundMinDistance: 0.25
   groundMaxDistance: 0.5
-  slopeLimit: 45
+  slopeLimit: 80
   dashVelocityForward: 12
   dashVelocityUp: 0.9
   dashTime: 0.4
@@ -2003,7 +2003,8 @@ MonoBehaviour:
     m_Bits: 64
   vCamera: {fileID: 5164042775343537403}
   miniScale: 0.25
-  miniCameraHeight: 0
+  miniCameraHeight: 0.7
+  miniCameraDistance: 1.7
   isMini: 0
 --- !u!1 &6898235685591837766
 GameObject:
