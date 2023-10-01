@@ -12,6 +12,8 @@ public class PowerUp : MonoBehaviour
     [SerializeField] private GameObject bombVisual;
     [SerializeField] private GameObject shootVisual;
 
+    public float roatioSpeed = 1.0f;
+
     private void Awake()
     {
         dashVisual.SetActive(false);
