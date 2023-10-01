@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class WaterScroll : MonoBehaviour
 {
-    [SerializeField] private Vector2 scrollVector = new Vector2(0.05f, 0.05f);
-    Vector2 offset = new Vector2(0f, 0f);
+    [SerializeField] private float scrollVector = .5f;
+    float offset = 0f;
 
     private Renderer rend;
 
@@ -14,7 +14,8 @@ public class WaterScroll : MonoBehaviour
 
     void Update()
     {
-        offset += scrollVector * Time.deltaTime;
-        rend.material.SetTextureOffset("_MainTex", offset);
+        float timeOffset = scrollVector * Time.deltaTime;
+        offset += timeOffset;
+        rend.material.SetFloat("_Offset", offset);
     }
 }

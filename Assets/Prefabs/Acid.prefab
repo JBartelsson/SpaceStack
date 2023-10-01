@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 49441a7e10178438fb8ae088de4cc625, type: 2}
+  - {fileID: 2100000, guid: fdb8c16c4613a154b94db6c7319edff5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 027e03ff98a6146c3b148a51b0252c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollVector: {x: 0.05, y: 0.05}
+  scrollVector: -0.1
 --- !u!114 &3900672468919897550
 MonoBehaviour:
   m_ObjectHideFlags: 0
