@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 using static PlayerSingleton;
 
 
@@ -15,6 +15,7 @@ public class UiAbility : MonoBehaviour
     [SerializeField] public Sprite minimizeImage;
     [SerializeField] public Sprite grenadeImage;
     [SerializeField] public Sprite circle;
+    [SerializeField] public Image black;
 
 
 
@@ -25,10 +26,16 @@ public class UiAbility : MonoBehaviour
     Stack<GameObject> imageStack = new Stack<GameObject>();
     Stack<GameObject> circleimageStack = new Stack<GameObject>();
 
+
+    void fadeBlack()
+    {
+        black.gameObject.SetActive(true);
+    }
     // Start is called before the first frame update
     void Start()
     {
         PlayerSingleton.Instance.OnAbilityStack += OnAbilityStackl;
+        PlayerSingleton.Instance.OnDeath += fadeBlack;
 
     }
 
