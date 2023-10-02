@@ -6,6 +6,7 @@ using UnityEngine;
 public class MovableBox : MonoBehaviour
 {
     private Rigidbody _rb;
+    [SerializeField] private LayerMask acidLayer;
     
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,14 @@ public class MovableBox : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _rb.isKinematic = false;
+        }
+    }
+
+    private void Update()
+    {
+        if(Physics.Raycast(transform.position, Vector3.down, 10f, acidLayer))
+        {
+            _rb.constraints = RigidbodyConstraints.None;
         }
     }
 }

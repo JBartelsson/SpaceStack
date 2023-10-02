@@ -17,9 +17,10 @@ public class UiAbility : MonoBehaviour
     [SerializeField] public Sprite circle;
 
 
+
     [SerializeField] public Color circleColor = new Color(1, 1, 1);
     [SerializeField] public Color defaultCircleColor = new Color(1, 1, 1);
-
+    [SerializeField] Vector3 imageScale = new Vector3(.8f, .8f, .8f);
 
     Stack<GameObject> imageStack = new Stack<GameObject>();
     Stack<GameObject> circleimageStack = new Stack<GameObject>();
@@ -44,7 +45,10 @@ public class UiAbility : MonoBehaviour
 
             if (imageStack.Count > 0)
             {
-                circleimageStack.Peek().GetComponent<UnityEngine.UI.Image>().color = circleColor;
+                circleimageStack.Peek().SetActive(true);
+                circleimageStack.Peek().GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
+                imageStack.Peek().GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
+
             }
         }
         else
@@ -74,7 +78,11 @@ public class UiAbility : MonoBehaviour
             //Set First elemtens Color to default color
             if (imageStack.Count > 0)
             {
-                circleimageStack.Peek().GetComponent<UnityEngine.UI.Image>().color = defaultCircleColor;
+                circleimageStack.Peek().SetActive(false);
+                circleimageStack.Peek().GetComponent<RectTransform>().localScale = imageScale;
+                imageStack.Peek().GetComponent<RectTransform>().localScale = imageScale;
+
+
             }
 
             // Symbol
