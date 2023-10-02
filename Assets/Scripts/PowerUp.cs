@@ -12,6 +12,7 @@ public class PowerUp : MonoBehaviour
     [SerializeField] private GameObject dashVisual;
     [SerializeField] private GameObject bombVisual;
     [SerializeField] private GameObject shootVisual;
+    [SerializeField] AudioSource sound;
 
     public float roatioSpeed = 1.0f;
 
@@ -58,10 +59,20 @@ public class PowerUp : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            sound.Play();
             PlayerSingleton.Instance.pushAbilityStack(powerUpType);
-            Destroy(gameObject);
+            dashVisual.SetActive(false);
+            shootVisual.SetActive(false);
+            bombVisual.SetActive(false);
+            minimizeVisual.SetActive(false);
+            Invoke(nameof(delete), 2.5f);
         }
         
+    }
+    void delete()
+    {
+        Destroy(gameObject);
+
     }
 
 }
