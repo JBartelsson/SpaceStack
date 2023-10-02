@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
@@ -5,6 +6,14 @@ using UnityEngine;
 
 public class MainMenuButtons : MonoBehaviour
 {
+    private void Start()
+    {
+        if(!PlayerPrefs.HasKey("Volume")) PlayerPrefs.SetFloat("Volume", 1f);
+        if(!PlayerPrefs.HasKey("MouseSensitivity")) PlayerPrefs.SetFloat("MouseSensitivity", 3f);
+        
+        AudioListener.volume = PlayerPrefs.GetFloat("Volume");
+    }
+
     public void Play()
     {
         SceneManager.LoadScene("LevelSelectionNew");
