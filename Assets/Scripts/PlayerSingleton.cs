@@ -36,6 +36,9 @@ public class PlayerSingleton : MonoBehaviour
     [SerializeField] private float miniCameraDistance;
     public bool isMini = false;
 
+    const string MOUSESENSITIVITY = "MouseSensitivity";
+
+
     private float oldCameraHeight;
     private float oldCameraDistance;
     
@@ -89,8 +92,17 @@ public class PlayerSingleton : MonoBehaviour
     private void Start()
     {
         Init();
-        vCamera.xMouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity");
-        vCamera.yMouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity");
+        if (PlayerPrefs.HasKey(MOUSESENSITIVITY))
+        {
+            vCamera.xMouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity");
+            vCamera.yMouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity");
+        }
+        else
+        {
+            PlayerPrefs.SetFloat(MOUSESENSITIVITY, 3f);
+            PlayerPrefs.Save();
+        }
+        
         oldCameraHeight = vCamera.height;
         oldCameraDistance = vCamera.defaultDistance;
     }
