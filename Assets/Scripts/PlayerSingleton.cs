@@ -210,7 +210,7 @@ public class PlayerSingleton : MonoBehaviour
         health = MaxHealth;
     }
 
-    public void CameraShake(float magitude, float duration)
+    public void CameraShake(float duration, float magitude)
     {
         StartCoroutine(camerShake.Shake(magitude, duration));
     }
