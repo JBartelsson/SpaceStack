@@ -7,11 +7,14 @@ public class MovableBox : MonoBehaviour
 {
     private Rigidbody _rb;
     [SerializeField] private LayerMask acidLayer;
+    [SerializeField] private AudioSource sound;
+    Vector3 oldPos;
     
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        oldPos = transform.position;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,5 +44,18 @@ public class MovableBox : MonoBehaviour
                 _rb.constraints = RigidbodyConstraints.None;
             }
         }
+        if (oldPos != transform.position)
+        {
+            if (!sound.isPlaying)
+            {
+                sound.Play();
+            }
+        } else
+        {
+            sound.Stop();
+
+        }
+        oldPos = transform.position;
+
     }
 }
