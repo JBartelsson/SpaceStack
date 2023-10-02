@@ -12,6 +12,9 @@ public class Bomb : MonoBehaviour
     [SerializeField] GameObject visual;
     [SerializeField] float bombShakeAmplitude;
     [SerializeField] float bombShakeLength;
+    [Header("Sound")]
+    [SerializeField] AudioSource fuse;
+    [SerializeField] AudioSource boomsound;
 
 
     private float bombTimer;
@@ -19,6 +22,8 @@ public class Bomb : MonoBehaviour
     void Start()
     {
         bombTimer = bombTimerMax;
+        fuse.Play();
+
     }
 
     // Update is called once per frame
@@ -36,6 +41,7 @@ public class Bomb : MonoBehaviour
     public void Detonate()
     {
         Debug.Log("Boom");
+
         PlayerSingleton.Instance.CameraShake(bombShakeAmplitude, bombShakeLength);
         Collider[] colliders = Physics.OverlapSphere(transform.position, bombRadius, destructionLayer);
         for (int i = 0; i < colliders.Length; i++)
@@ -50,6 +56,7 @@ public class Bomb : MonoBehaviour
                 player.DamagePlayer(damage);
             }
         }
+        boomsound.Play();
         particle.Play();
         Destroy(visual.gameObject);
         Invoke(nameof(DestroyAll) , 2f);

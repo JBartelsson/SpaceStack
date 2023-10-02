@@ -9,6 +9,8 @@ public class TriggerablePressurePlate : TriggerObject
     private Transform child;
     public TriggerObject trigger;
     public List<GameObject> collisionList = new List<GameObject>();
+    [SerializeField] AudioSource sound;
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,8 @@ public class TriggerablePressurePlate : TriggerObject
                         }
                     }
                 }
+                sound.Play();
+
                 GetComponent<MeshRenderer>().enabled = true;
                 collisionList.Add(other.gameObject);
                 if (!isActivated)
