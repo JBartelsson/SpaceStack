@@ -39,6 +39,8 @@ public class PlayerSingleton : MonoBehaviour
     [SerializeField] private float miniCameraDistance;
     public bool isMini = false;
 
+    [SerializeField] AudioSource dashSound;
+
     const string MOUSESENSITIVITY = "MouseSensitivity";
 
 
@@ -146,6 +148,7 @@ public class PlayerSingleton : MonoBehaviour
 
     private void Dash()
     {
+        dashSound.Play();
         controller.Dash();
         Instantiate(dashParticles, transform);
     }
