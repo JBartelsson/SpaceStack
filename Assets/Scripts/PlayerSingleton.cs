@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerSingleton : MonoBehaviour
 {
 
-    public CamerShake camerShake;
+    //public CamerShake camerShake;
 
     public enum Ability {None, Dash, Shoot, Grante, Minimize};
 
@@ -38,8 +38,10 @@ public class PlayerSingleton : MonoBehaviour
     [SerializeField] private float miniCameraHeight;
     [SerializeField] private float miniCameraDistance;
     public bool isMini = false;
-
+    [Header("Sounds")]
     [SerializeField] AudioSource dashSound;
+    [SerializeField] AudioSource minimize;
+    [SerializeField] AudioSource maximize;
 
     const string MOUSESENSITIVITY = "MouseSensitivity";
 
@@ -168,6 +170,7 @@ public class PlayerSingleton : MonoBehaviour
             isMini = true;
             vCamera.height = miniCameraHeight;
             vCamera.defaultDistance = miniCameraDistance;
+            minimize.Play();
         }
         else
         {
@@ -175,7 +178,7 @@ public class PlayerSingleton : MonoBehaviour
             isMini = false;
             vCamera.height = oldCameraHeight;
             vCamera.defaultDistance = oldCameraDistance;
-
+            maximize.Play();
         }
     }
     private void Bomb()
@@ -215,7 +218,7 @@ public class PlayerSingleton : MonoBehaviour
 
     public void CameraShake(float duration, float magitude)
     {
-        StartCoroutine(camerShake.Shake(duration, magitude));
+        //StartCoroutine(camerShake.Shake(duration, magitude));
     }
     
 }

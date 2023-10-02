@@ -6,6 +6,7 @@ public class Stone : MonoBehaviour
 {
     [SerializeField] List<GameObject> rigidBodies;
     [SerializeField] private GameObject stoneWhole;
+    [SerializeField] private AudioSource stoneSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,7 @@ public class Stone : MonoBehaviour
         {
             rigidBody.SetActive(true);
         }
+        stoneSound.Play();
         stoneWhole.SetActive(false);
         GetComponent<BoxCollider>().enabled = false;
 

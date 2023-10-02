@@ -5,6 +5,8 @@ public class Lever : TriggerObject
     private bool _playerInRange;
 
     private Animator _animator;
+
+    [SerializeField] AudioSource sound;
     
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,7 @@ public class Lever : TriggerObject
             if (_playerInRange)
             {
                 Switch();
+                sound.Play();
                 _animator.SetBool("Active", isActivated);
             }
         }

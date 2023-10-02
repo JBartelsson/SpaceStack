@@ -3,6 +3,7 @@ using UnityEngine;
 public class TriggerableDoor : Triggerable
 {
     [SerializeField] private bool SlideDown;
+    [SerializeField] private AudioSource slidingDoor;
     
     private Animator _animator;
 
@@ -14,6 +15,7 @@ public class TriggerableDoor : Triggerable
     
     public override void Trigger(bool active)
     {
+        slidingDoor.Play();
         _animator.SetBool(SlideDown ? "Down" : "Up", active);
     }
 }
