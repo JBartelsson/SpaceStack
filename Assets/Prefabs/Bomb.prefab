@@ -128,6 +128,8 @@ MonoBehaviour:
     m_Bits: 128
   particle: {fileID: 3930862396964077971}
   visual: {fileID: 589794796484580281}
+  bombShakeAmplitude: 0.4
+  bombShakeLength: 1
 --- !u!1 &4880136049459629277
 GameObject:
   m_ObjectHideFlags: 0

@@ -212,7 +212,7 @@ public class PlayerSingleton : MonoBehaviour
 
     public void CameraShake(float magitude, float duration)
     {
-        StartCoroutine(camerShake.Shake(magitude, duration));
+        StartCoroutine(camerShake.Shake(duration, magitude));
     }
     
 }
