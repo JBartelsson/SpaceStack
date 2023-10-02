@@ -1886,7 +1886,7 @@ MonoBehaviour:
     rotationSpeed: 16
     walkByDefault: 0
     rotateWithCamera: 0
-    walkSpeed: 2
+    walkSpeed: 1.4
     runningSpeed: 4
     sprintSpeed: 6
   strafeSpeed:
@@ -1930,7 +1930,7 @@ MonoBehaviour:
   horizontalInput: Horizontal
   verticallInput: Vertical
   jumpInput: 0
-  strafeInput: 9
+  strafeInput: 0
   sprintInput: 0
   rotateCameraXInput: Mouse X
   rotateCameraYInput: Mouse Y
