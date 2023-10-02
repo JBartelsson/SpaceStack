@@ -11,6 +11,7 @@ public class Bomb : MonoBehaviour
     [SerializeField] ParticleSystem particle;
     [SerializeField] GameObject visual;
 
+
     private float bombTimer;
     private bool detonated = false;
     void Start()
@@ -33,6 +34,7 @@ public class Bomb : MonoBehaviour
     public void Detonate()
     {
         Debug.Log("Boom");
+        PlayerSingleton.Instance.CameraShake(.11f, 1f);
         Collider[] colliders = Physics.OverlapSphere(transform.position, bombRadius, destructionLayer);
         for (int i = 0; i < colliders.Length; i++)
         {
