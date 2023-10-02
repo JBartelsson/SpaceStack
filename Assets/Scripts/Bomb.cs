@@ -10,6 +10,8 @@ public class Bomb : MonoBehaviour
     [SerializeField] LayerMask destructionLayer;
     [SerializeField] ParticleSystem particle;
     [SerializeField] GameObject visual;
+    [SerializeField] float bombShakeAmplitude;
+    [SerializeField] float bombShakeLength;
 
 
     private float bombTimer;
@@ -34,7 +36,7 @@ public class Bomb : MonoBehaviour
     public void Detonate()
     {
         Debug.Log("Boom");
-        PlayerSingleton.Instance.CameraShake(.11f, 1f);
+        PlayerSingleton.Instance.CameraShake(bombShakeAmplitude, bombShakeLength);
         Collider[] colliders = Physics.OverlapSphere(transform.position, bombRadius, destructionLayer);
         for (int i = 0; i < colliders.Length; i++)
         {
