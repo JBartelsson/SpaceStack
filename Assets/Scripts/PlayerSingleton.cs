@@ -30,7 +30,7 @@ public class PlayerSingleton : MonoBehaviour
     [SerializeField] private GameObject bombPrefab;
     [SerializeField] private LayerMask groundLayer;
     [Header("Minimize/Maximize")]
-    [SerializeField] vThirdPersonCamera vCamera;
+    [SerializeField] public vThirdPersonCamera vCamera;
     [SerializeField] private float miniScale;
     [SerializeField] private float miniCameraHeight;
     [SerializeField] private float miniCameraDistance;
@@ -89,6 +89,8 @@ public class PlayerSingleton : MonoBehaviour
     private void Start()
     {
         Init();
+        vCamera.xMouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity");
+        vCamera.yMouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity");
         oldCameraHeight = vCamera.height;
         oldCameraDistance = vCamera.defaultDistance;
     }
@@ -192,4 +194,5 @@ public class PlayerSingleton : MonoBehaviour
         transform.rotation = spawnPoint.rotation;
         health = MaxHealth;
     }
+    
 }
