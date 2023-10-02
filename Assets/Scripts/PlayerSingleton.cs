@@ -43,6 +43,7 @@ public class PlayerSingleton : MonoBehaviour
     [SerializeField] AudioSource minimize;
     [SerializeField] AudioSource maximize;
     [SerializeField] AudioSource acidDeath;
+    [SerializeField] AudioSource foodstep;
 
     const string MOUSESENSITIVITY = "MouseSensitivity";
 
@@ -148,6 +149,21 @@ public class PlayerSingleton : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        {
+            if (!foodstep.isPlaying)
+            {
+                foodstep.Play();
+            }
+        }
+        else
+        {
+            if (foodstep.isPlaying)
+            {
+                foodstep.Stop();
+            }
         }
     }
 
