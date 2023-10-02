@@ -42,6 +42,7 @@ public class PlayerSingleton : MonoBehaviour
     [SerializeField] AudioSource dashSound;
     [SerializeField] AudioSource minimize;
     [SerializeField] AudioSource maximize;
+    [SerializeField] AudioSource acidDeath;
 
     const string MOUSESENSITIVITY = "MouseSensitivity";
 
@@ -99,6 +100,8 @@ public class PlayerSingleton : MonoBehaviour
     private void Start()
     {
         Init();
+        Time.timeScale = 1;
+
         if (PlayerPrefs.HasKey(MOUSESENSITIVITY))
         {
             vCamera.xMouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity");
@@ -204,9 +207,23 @@ public class PlayerSingleton : MonoBehaviour
 
     private void Die()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        acidDeath.Play();
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        Invoke(nameof(Reload), 0f);
+    }
+
+    void disableGravity()
+    {
+        GetComponent<Rigidbody>().useGravity = false;
+
+    }
+
+    void Reload()
+    {
         transform.position = spawnPoint.position;
         transform.rotation = spawnPoint.rotation;
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void Init()
