@@ -121,20 +121,6 @@ public class PlayerSingleton : MonoBehaviour
             //rb.AddForce(forwardMotion, ForceMode.Impulse);
         }
         
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            pushAbilityStack(Ability.Grante);
-        }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            pushAbilityStack(Ability.Dash);
-        }
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            Ability tmp = popAbilityStack();
-            Debug.Log("Popidi Pop: " + tmp.ToString());
-        }
-
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
