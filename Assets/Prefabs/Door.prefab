@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1107001432805885408}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 1107001434330560263}
   - component: {fileID: 1107001434330560262}
   - component: {fileID: 6803451640761982835}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StoneBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 1965429708873694086}
   - component: {fileID: 2878477138693036608}
   - component: {fileID: 8748243613740896391}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GridPanel (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 2248645517415513105}
   - component: {fileID: 6819736982626220975}
   - component: {fileID: 8803874468505979156}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GridPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 2924313166932039951}
   - component: {fileID: 6702088593958115704}
   - component: {fileID: 3896349727844717852}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GridPanel (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +429,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7058472184530846178}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PowerUpCage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ GameObject:
   - component: {fileID: 8479505205854666658}
   - component: {fileID: 7578349797350304693}
   - component: {fileID: 800138837688502806}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GridPanel (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 4564221790673890029}
   - component: {fileID: 7799981016165546767}
   - component: {fileID: 7257192780819651308}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GridPanel (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -660,7 +660,7 @@ GameObject:
   - component: {fileID: 8536212828448267677}
   - component: {fileID: 2268370246399818431}
   - component: {fileID: 6678666725617544583}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MovableObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}

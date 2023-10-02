@@ -35,9 +35,11 @@ public class MovableBox : MonoBehaviour
 
     private void Update()
     {
-        if(Physics.Raycast(transform.position, Vector3.down, 10f, acidLayer))
+        if(Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 10f, acidLayer))
         {
-            _rb.constraints = RigidbodyConstraints.None;
+            if (hit.collider.CompareTag("Acid")){
+                _rb.constraints = RigidbodyConstraints.None;
+            }
         }
     }
 }
