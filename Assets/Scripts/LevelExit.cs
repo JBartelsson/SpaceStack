@@ -17,7 +17,8 @@ public class LevelExit : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             winMenu.SetActive(true);
-            StartCoroutine(StopGameSlowly());
+            Time.timeScale = 0f;
+            StartCoroutine(ScaleTime(1f, 0f, .5f));
         }
     }
 
@@ -34,5 +35,21 @@ public class LevelExit : MonoBehaviour
             }
         }
         
+    }
+
+    IEnumerator ScaleTime(float start, float end, float time)     //not in Start or Update
+    {
+        float lastTime = Time.realtimeSinceStartup;
+        float timer = 0.0f;
+
+        while (timer < time)
+        {
+            Time.timeScale = Mathf.Lerp(start, end, timer / time);
+            timer += (Time.realtimeSinceStartup - lastTime);
+            lastTime = Time.realtimeSinceStartup;
+            yield return null;
+        }
+
+        Time.timeScale = end;
     }
 }

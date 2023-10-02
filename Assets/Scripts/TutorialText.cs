@@ -34,7 +34,6 @@ public class TutorialText : MonoBehaviour
     {
         transform.forward = Camera.main.transform.forward;
         float dist = Vector3.Distance(transform.position, PlayerSingleton.Instance.transform.position);
-        Debug.Log(dist);
         if ( dist < closeRange)
         {
             OnSuccess?.Invoke(this, EventArgs.Empty);
