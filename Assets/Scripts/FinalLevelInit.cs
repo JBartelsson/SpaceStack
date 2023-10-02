@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class FinalLevelInit : MonoBehaviour
 {
+    public AudioClip levelMusic;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +16,11 @@ public class FinalLevelInit : MonoBehaviour
             giveRandomPowerUp();
         }
         InvokeRepeating(nameof(giveRandomPowerUp), 3f, 3f);
+        
+        
+        AudioSource audio = FindObjectOfType<MusicSingleton>().gameObject.GetComponent<AudioSource>();
+        audio.clip = levelMusic;
+        audio.Play();
     }
 
     void giveRandomPowerUp()

@@ -35,6 +35,7 @@ public class WinMenuButtons : MonoBehaviour
 
     public void Menu()
     {
+        
         SceneManager.LoadScene("MainMenuNew");
     }
 }
