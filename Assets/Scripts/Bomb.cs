@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public class Bomb : MonoBehaviour
 {
@@ -36,9 +37,8 @@ public class Bomb : MonoBehaviour
     public void Detonate()
     {
         Debug.Log("Boom");
-        PlayerSingleton.Instance.CameraShake(bombShakeAmplitude, bombShakeLength);
-        //play Sound
-        GetComponent<AudioSource>().Play();
+        //PlayerSingleton.Instance.CameraShake(bombShakeAmplitude, bombShakeLength);
+        CameraShaker.Instance.ShakeOnce(4f, 4f, .1f, 1f);
         Collider[] colliders = Physics.OverlapSphere(transform.position, bombRadius, destructionLayer);
         for (int i = 0; i < colliders.Length; i++)
         {

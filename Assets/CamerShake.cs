@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public class CamerShake : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class CamerShake : MonoBehaviour
 
     //private void Avake()
     //{
-        
+
     //}
 
     //private void Start()
@@ -30,7 +31,7 @@ public class CamerShake : MonoBehaviour
     //    _cbmcp.m_AmplitudeGain = shakeIntensity;
 
     //    timer = shakeTime;
-    
+
     //}
 
     //public void StopShake()
@@ -62,6 +63,14 @@ public class CamerShake : MonoBehaviour
     //        }
     //    }
     //}
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.PageUp))
+        {
+            
+        }
+    }
 
     public IEnumerator Shake (float duration, float magnitude)
     {
