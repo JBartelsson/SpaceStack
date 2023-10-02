@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,8 @@ public class OptionUI : MonoBehaviour
         if (PlayerPrefs.HasKey(MOUSESENSITIVITY))
         {
             slider.value = PlayerPrefs.GetFloat(MOUSESENSITIVITY);
-        } else
+        }
+        else
         {
             slider.value = 3f;
         }
