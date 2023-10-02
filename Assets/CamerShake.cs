@@ -1,66 +1,74 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
+using EZCameraShake;
 
 public class CamerShake : MonoBehaviour
 {
 
-    private CinemachineVirtualCamera cinemachineVirtualCamera;
-    private float shakeIntensity = 1f;
-    private float shakeTime = 0.2f;
+    //private CinemachineVirtualCamera cinemachineVirtualCamera;
+    //private float shakeIntensity = 1f;
+    //private float shakeTime = 0.2f;
 
-    private float timer;
-    private CinemachineBasicMultiChannelPerlin _cbmcp;
+    //private float timer;
+    //private CinemachineBasicMultiChannelPerlin _cbmcp;
 
-    private void Avake()
-    {
-        
-    }
+    //private void Avake()
+    //{
 
-    private void Start()
-    {
-        cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
-        StopShake();
-    }
+    //}
 
-    public void ShakeCamera()
-    {
-        Debug.Log("Shake Baby Shake");
-        CinemachineBasicMultiChannelPerlin _cbmcp = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        _cbmcp.m_AmplitudeGain = shakeIntensity;
+    //private void Start()
+    //{
+    //    cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
+    //    StopShake();
+    //}
 
-        timer = shakeTime;
-    
-    }
+    //public void ShakeCamera()
+    //{
+    //    Debug.Log("Shake Baby Shake");
+    //    CinemachineBasicMultiChannelPerlin _cbmcp = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+    //    _cbmcp.m_AmplitudeGain = shakeIntensity;
 
-    public void StopShake()
-    {
-        CinemachineBasicMultiChannelPerlin _cbmcp = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        _cbmcp.m_AmplitudeGain = 0f;
-        timer = 0f;
-    }
+    //    timer = shakeTime;
+
+    //}
+
+    //public void StopShake()
+    //{
+    //    CinemachineBasicMultiChannelPerlin _cbmcp = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+    //    _cbmcp.m_AmplitudeGain = 0f;
+    //    timer = 0f;
+    //}
+
+    //private void Update()
+    //{
+    //    if (Input.GetKey(KeyCode.PageUp))
+    //    {
+    //        ShakeCamera();
+    //    }
+
+    //    if (Input.GetKey(KeyCode.PageDown))
+    //    {
+    //        StopShake();
+    //    }
+
+    //    if (timer > 0)
+    //    {
+    //        timer -= Time.deltaTime;
+
+    //        if (timer <= 0)
+    //        {
+    //            StopShake();
+    //        }
+    //    }
+    //}
 
     private void Update()
     {
         if (Input.GetKey(KeyCode.PageUp))
         {
-            ShakeCamera();
-        }
-
-        if (Input.GetKey(KeyCode.PageDown))
-        {
-            StopShake();
-        }
-
-        if (timer > 0)
-        {
-            timer -= Time.deltaTime;
-
-            if (timer <= 0)
-            {
-                StopShake();
-            }
+            
         }
     }
 
