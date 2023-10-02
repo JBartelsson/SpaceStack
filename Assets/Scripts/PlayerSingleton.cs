@@ -14,6 +14,7 @@ public class PlayerSingleton : MonoBehaviour
 
     private Stack<Ability> abilityStack = new Stack<Ability>();
     public event Action<Ability> OnAbilityStack;
+    public event Action OnDeath;
 
     [Header("Dashing")]
     bool isDashing = false;
@@ -223,9 +224,9 @@ public class PlayerSingleton : MonoBehaviour
 
     private void Die()
     {
-        acidDeath.Play();
-        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-        Invoke(nameof(Reload), 0f);
+        OnDeath?.Invoke();
+        StartCoroutine(DeathSoundTest());
+
     }
 
     void disableGravity()
@@ -253,5 +254,12 @@ public class PlayerSingleton : MonoBehaviour
     {
         //StartCoroutine(camerShake.Shake(duration, magitude));
     }
-    
+
+    IEnumerator DeathSoundTest()
+    {
+        acidDeath.Play();
+        yield return new WaitForSeconds(2f);
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        Invoke(nameof(Reload), 0f);
+    }
 }
