@@ -10,12 +10,12 @@ public class MenuInit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AudioSource[] audios = FindObjectsOfType<AudioSource>();
+        MusicSingleton[] audios = FindObjectsOfType<MusicSingleton>();
 
         for (int i = 0; i < audios.Length; i++)
         {
-            audios[i].clip = menuMusic;
-            audios[i].Play();
+            audios[i].GetComponent<AudioSource>().clip = menuMusic;
+            audios[i].GetComponent<AudioSource>().Play();
         }
     }
 }
