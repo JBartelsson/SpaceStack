@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3900672468919897550}
   - component: {fileID: 3321362245198740856}
   - component: {fileID: 1881580336005736789}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Acid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,6 +152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particlePrefab: {fileID: 6846962157777951308}
+  particleSpawnWaitLow: 2.5
+  particleSpawnWait: 5
 --- !u!1001 &5877002257305479630
 PrefabInstance:
   m_ObjectHideFlags: 0
