@@ -160,7 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acidLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 320
 --- !u!54 &2722461887799519729
 Rigidbody:
   m_ObjectHideFlags: 0
