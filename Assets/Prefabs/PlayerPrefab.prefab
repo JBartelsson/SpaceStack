@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 5164042775343537405}
   - component: {fileID: 6315707047675962385}
   - component: {fileID: 5164042775343537403}
+  - component: {fileID: 1438029693687026732}
   m_Layer: 0
   m_Name: vThirdPersonCamera_LITE
   m_TagString: MainCamera
@@ -162,6 +163,18 @@ MonoBehaviour:
   currentStateName: 
   currentTarget: {fileID: 0}
   movementSpeed: {x: 0, y: 0}
+--- !u!114 &1438029693687026732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5164042775343537400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986475b91fed1784b9891ace61bf176e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6490123855333428998
 GameObject:
   m_ObjectHideFlags: 0
@@ -1979,6 +1992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6bd5c5ad353d34dae565b4d562c00d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camerShake: {fileID: 1438029693687026732}
   dashParticles: {fileID: 6658396251062863416, guid: c675fa7feaada1d4aa744e01e94602dc, type: 3}
   controller: {fileID: 6898235685585452515}
   dash: 32

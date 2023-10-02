@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerSingleton : MonoBehaviour
 {
+
+    public CamerShake camerShake;
+
     public enum Ability {None, Dash, Shoot, Grante, Minimize};
 
     private Stack<Ability> abilityStack = new Stack<Ability>();
@@ -205,6 +208,11 @@ public class PlayerSingleton : MonoBehaviour
         transform.position = spawnPoint.position;
         transform.rotation = spawnPoint.rotation;
         health = MaxHealth;
+    }
+
+    public void CameraShake(float magitude, float duration)
+    {
+        StartCoroutine(camerShake.Shake(magitude, duration));
     }
     
 }
