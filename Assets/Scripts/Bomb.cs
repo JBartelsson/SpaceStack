@@ -13,6 +13,7 @@ public class Bomb : MonoBehaviour
     [SerializeField] GameObject visual;
     [SerializeField] float bombShakeAmplitude;
     [SerializeField] float bombShakeLength;
+    [SerializeField] AudioSource explosionSource;
 
 
     private float bombTimer;
@@ -38,7 +39,8 @@ public class Bomb : MonoBehaviour
     {
         Debug.Log("Boom");
         //PlayerSingleton.Instance.CameraShake(bombShakeAmplitude, bombShakeLength);
-        CameraShaker.Instance.ShakeOnce(4f, 4f, .1f, 1f);
+        //CameraShaker.Instance.ShakeOnce(4f, 4f, .1f, 1f);
+        explosionSource.Play();
         Collider[] colliders = Physics.OverlapSphere(transform.position, bombRadius, destructionLayer);
         for (int i = 0; i < colliders.Length; i++)
         {
