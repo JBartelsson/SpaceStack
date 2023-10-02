@@ -37,6 +37,8 @@ public class Bomb : MonoBehaviour
     {
         Debug.Log("Boom");
         PlayerSingleton.Instance.CameraShake(bombShakeAmplitude, bombShakeLength);
+        //play Sound
+        GetComponent<AudioSource>().Play();
         Collider[] colliders = Physics.OverlapSphere(transform.position, bombRadius, destructionLayer);
         for (int i = 0; i < colliders.Length; i++)
         {
