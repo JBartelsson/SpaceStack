@@ -308,6 +308,7 @@ GameObject:
   - component: {fileID: 317650688}
   - component: {fileID: 317650687}
   - component: {fileID: 317650691}
+  - component: {fileID: 317650692}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -417,6 +418,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 473395ee12a9160439685e56fce8305b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &317650692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317650686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b733a466cb4f7434ebd22ef97df40fa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 434880949}
 --- !u!1 &430427584
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,12 +553,24 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1431225557}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 5
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 317650692}
+        m_TargetAssemblyTypeName: OptionUI, Assembly-CSharp
+        m_MethodName: SetMouseSensitivity
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &489193340
 GameObject:
   m_ObjectHideFlags: 0
